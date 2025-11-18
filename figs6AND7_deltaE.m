@@ -40,7 +40,7 @@ load(fullfile(pwd,'data','DeltaE_adaptation_summary.mat'), ...
 
 load(fullfile(pwd,'data','allData.mat'), 'allData');
 load(fullfile(pwd,'data','fig_parameters.mat'), 'figp');
-load(fullfile('data','list_Obs_order'), 'list_Obs');
+load(fullfile(pwd,'data','list_Obs_order'), 'list_Obs');
 
 %% ========================================================================
 % Scene Lists
