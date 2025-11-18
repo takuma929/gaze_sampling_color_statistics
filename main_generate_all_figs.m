@@ -1,0 +1,4 @@
+figs1AND2_gaze_density
+fig3_gaze_velocity_cumulative_distributions
+figs4AND5_corr_localANDglobal
+figs6AND7_deltaE
