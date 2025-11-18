@@ -62,17 +62,6 @@ cmap_compObs.randomGaze          = [1 0 0];
 cmap_compObs.randomWalk_step_mode = [0 0 1];
 cmap_compObs.maxChroma           = [0.0980,0.4196,0.1412];
 
-%% ------------------------------------------------------------------------
-% Helper: load 5-iteration computational observer data
-% ------------------------------------------------------------------------
-function M = loadCompObsMean(corrStruct, env, varName, compName)
-    for i = 1:5
-        fieldName = sprintf('%s_iter%d', compName, i);
-        tmp(:,:,i) = squeeze(corrStruct.(env).(fieldName).(varName)(:,3,:)); %#ok<AGROW>
-    end
-    M = mean(tmp,3);   % average across 5 iterations
-end
-
 
 %% ========================================================================
 % ----------------------------- FIELD -------------------------------------
@@ -218,8 +207,19 @@ end
 close all
 
 
+%% ------------------------------------------------------------------------
+% Helper: load 5-iteration computational observer data
+% ------------------------------------------------------------------------
+function M = loadCompObsMean(corrStruct, env, varName, compName)
+    for i = 1:5
+        fieldName = sprintf('%s_iter%d', compName, i);
+        tmp(:,:,i) = squeeze(corrStruct.(env).(fieldName).(varName)(:,3,:)); %#ok<AGROW>
+    end
+    M = mean(tmp,3);   % average across 5 iterations
+end
+
 %% ========================================================================
-% Helper function
+% Helper function: draw text in plot
 % ========================================================================
 function drawTextOpaque(ax, x, y, str, color, fs, fontname)
     t = text(ax, x, y, str, 'FontSize', fs, 'FontName', fontname, ...
